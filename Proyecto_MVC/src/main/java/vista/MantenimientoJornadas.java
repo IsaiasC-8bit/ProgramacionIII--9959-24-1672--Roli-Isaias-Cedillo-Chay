@@ -67,9 +67,7 @@ public class MantenimientoJornadas extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        txtDireccion = new javax.swing.JTextField();
-        label6 = new javax.swing.JLabel();
-        txtEstatus = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         label1 = new javax.swing.JLabel();
         label5 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
@@ -90,7 +88,7 @@ public class MantenimientoJornadas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo de la carrera", "Nombre de la carrera"
+                "Codigo de la jornada", "Nombre de la jornada"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -112,20 +110,15 @@ public class MantenimientoJornadas extends javax.swing.JFrame {
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 
-        txtDireccion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtDireccion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label6.setText("Estatus de la carrera");
-
-        txtEstatus.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtEstatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtCodigo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtCodigo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtCodigo.addActionListener(this::txtCodigoActionPerformed);
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label1.setText("Vendedor");
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("Id de la carrera");
+        label5.setText("Codigo de la jornada");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(this::btnModificarActionPerformed);
@@ -134,12 +127,13 @@ public class MantenimientoJornadas extends javax.swing.JFrame {
         lb.setText(".");
 
         label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label3.setText("Nombre de la carrera");
+        label3.setText("Nombre de la jornada");
 
         jLabel1.setText("Seleccion de codigo de carrera");
 
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtNombre.addActionListener(this::txtNombreActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,13 +162,11 @@ public class MantenimientoJornadas extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label3)
-                            .addComponent(label5)
-                            .addComponent(label6))
+                            .addComponent(label5))
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                            .addComponent(txtNombre)
-                            .addComponent(txtEstatus))
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(txtNombre))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -205,13 +197,9 @@ public class MantenimientoJornadas extends javax.swing.JFrame {
                                     .addComponent(label3))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(label5)))
                             .addComponent(lb))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
@@ -233,9 +221,8 @@ public class MantenimientoJornadas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        txtNombre.setText("");   // ✅
-        txtEstatus.setText("");  // ✅
-        txtbuscado.setText("");  // ✅
+        txtNombre.setText("");   // Limpia el campo nombre
+        txtbuscado.setText("");  // Limpia el campo de búsqueda
         btnRegistrar.setEnabled(true);
         btnModificar.setEnabled(true);
         btnEliminar.setEnabled(true);
@@ -244,18 +231,18 @@ public class MantenimientoJornadas extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         JornadaDAO jornadaDAO = new JornadaDAO();
-        Jornada carreraAEliminar = new Jornada();
-        carreraAEliminar.setCar_codigo(Integer.parseInt(txtbuscado.getText())); // Código a eliminar
-        jornadaDAO.delete(carreraAEliminar);                                    // Se elimina en la BD
-        llenadoDeTablas();
+Jornada jornadaAEliminar = new Jornada();
+jornadaAEliminar.setjor_codigo(Integer.parseInt(txtbuscado.getText())); // Código a eliminar
+jornadaDAO.delete(jornadaAEliminar);                                    // Se elimina en la BD
+llenadoDeTablas();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         JornadaDAO jornadaDAO = new JornadaDAO();
-        Jornada carreraAInsertar = new Jornada();
-        carreraAInsertar.setCar_nombre(txtNombre.getText());   // solo nombre
-        carreraAInsertar.setCar_estatus(txtEstatus.getText()); // y estatus
-        jornadaDAO.insert(carreraAInsertar);
+        Jornada jornadaAInsertar = new Jornada();
+        jornadaAInsertar.setjor_nombre(txtNombre.getText()); // solo nombre, el código es autoincremental
+        jornadaAInsertar.setjor_codigo(Integer.parseInt(txtCodigo.getText())); // Código de la jornada   
+        jornadaDAO.insert(jornadaAInsertar);
         llenadoDeTablas();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -267,13 +254,20 @@ public class MantenimientoJornadas extends javax.swing.JFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         JornadaDAO jornadaDAO = new JornadaDAO();
-        Jornada carreraAActualizar = new Jornada();
-        carreraAActualizar.setCar_codigo(Integer.parseInt(txtbuscado.getText())); // ✅
-        carreraAActualizar.setCar_nombre(txtNombre.getText());
-        carreraAActualizar.setCar_estatus(txtEstatus.getText());
-        jornadaDAO.update(carreraAActualizar); // ✅
-        llenadoDeTablas();                                     // Se refresca la tabla
+        Jornada jornadaAActualizar = new Jornada();
+        jornadaAActualizar.setjor_codigo(Integer.parseInt(txtbuscado.getText())); // Código a actualizar
+        jornadaAActualizar.setjor_nombre(txtNombre.getText());                    // Nuevo nombre
+        jornadaDAO.update(jornadaAActualizar);
+        llenadoDeTablas();                                    // Se refresca la tabla
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,11 +305,9 @@ public class MantenimientoJornadas extends javax.swing.JFrame {
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label5;
-    private javax.swing.JLabel label6;
     private javax.swing.JLabel lb;
     private javax.swing.JTable tableJor;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtEstatus;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables

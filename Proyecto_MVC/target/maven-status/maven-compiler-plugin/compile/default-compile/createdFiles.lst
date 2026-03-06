@@ -1,8 +1,10 @@
 domain\Empleado.class
 vista\MantenimientoVendedores$5.class
+datos\ConexionJornada.class
 vista\Login$2.class
 vista\MdiGeneral$1.class
 vista\MdiGeneral.class
+vista\Login$7.class
 datos\ConexionCarreras.class
 vista\Login$3.class
 vista\MantenimientoCarreras.class
@@ -14,9 +16,12 @@ vista\MantenimientoVendedores$2.class
 datos\Conexion.class
 vista\Login$5.class
 vista\MantenimientoVendedores$7.class
+datos\JornadaDAO.class
 domain\Computador.class
 vista\MdiGeneral$2.class
 vista\Login$6.class
+vista\MantenimientoJornadas$1.class
+vista\MantenimientoJornadas.class
 vista\Login$1.class
 vista\Login.class
 vista\MantenimientoVendedores$6.class
@@ -28,6 +33,7 @@ datos\VendedorDAO.class
 vista\MantenimientoVendedores$8.class
 domain\Empresa.class
 datos\EmpleadoDAO.class
+domain\Jornada.class
 domain\Vendedor.class
 vista\Login$4.class
 vista\MantenimientoVendedores$3.class

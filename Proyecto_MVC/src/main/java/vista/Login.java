@@ -48,6 +48,7 @@ public class Login extends javax.swing.JFrame {
         txtContraseña = new javax.swing.JPasswordField();
         btnAcesso = new javax.swing.JButton();
         carreras_button = new javax.swing.JButton();
+        jornada_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +94,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jornada_button.setText("Jornada");
+        jornada_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jornada_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,10 +127,13 @@ public class Login extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAcesso)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAcesso))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jornada_button)
+                        .addGap(15, 15, 15)
                         .addComponent(carreras_button)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,9 +152,12 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(jButton2)
-                    .addComponent(btnAcesso)
+                    .addComponent(btnAcesso))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jornada_button, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(carreras_button))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,6 +223,12 @@ public class Login extends javax.swing.JFrame {
         MantenimientoCarreras mantenimiento = new MantenimientoCarreras();
         mantenimiento.setVisible(true);
     }//GEN-LAST:event_carreras_buttonActionPerformed
+
+    private void jornada_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jornada_buttonActionPerformed
+        // TODO add your handling code here:
+        MantenimientoJornadas jornadas = new MantenimientoJornadas();
+        jornadas.setVisible(true);
+    }//GEN-LAST:event_jornada_buttonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -253,6 +273,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jornada_button;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

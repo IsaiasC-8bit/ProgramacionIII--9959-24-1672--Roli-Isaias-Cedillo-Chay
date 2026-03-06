@@ -102,8 +102,8 @@ public class JornadaDAO {
         try {
             conn = ConexionJornada.getConnection(); // Se obtiene la conexión
             stmt = conn.prepareStatement(SQL_UPDATE); // Se prepara la consulta UPDATE
-            stmt.setInt(1, jornada.getjor_codigo()); // Se asigna el nuevo codigo
-            stmt.setString(2, jornada.getjor_nombre());    // Se asigna el nombre 
+            stmt.setString(1, jornada.getjor_nombre()); // posición 1 = nombre (coincide con SET jor_nombre=?)
+            stmt.setInt(2, jornada.getjor_codigo());    // posición 2 = codigo (coincide con WHERE jor_codigo=?) 
 
             System.out.println("Ejecutando query: " + SQL_UPDATE);
             rows = stmt.executeUpdate(); // Se ejecuta la actualización
