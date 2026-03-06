@@ -3,8 +3,12 @@ vista\MantenimientoVendedores$5.class
 vista\Login$2.class
 vista\MdiGeneral$1.class
 vista\MdiGeneral.class
+datos\ConexionCarreras.class
 vista\Login$3.class
+vista\MantenimientoCarreras.class
+datos\CarreraDAO.class
 vista\MantenimientoVendedores.class
+vista\MantenimientoCarreras$1.class
 domain\Usuario.class
 vista\MantenimientoVendedores$2.class
 datos\Conexion.class
@@ -12,11 +16,13 @@ vista\Login$5.class
 vista\MantenimientoVendedores$7.class
 domain\Computador.class
 vista\MdiGeneral$2.class
+vista\Login$6.class
 vista\Login$1.class
 vista\Login.class
 vista\MantenimientoVendedores$6.class
 datos\UsuarioDAO.class
 vista\MantenimientoVendedores$4.class
+domain\Carrera.class
 vista\MantenimientoVendedores$1.class
 datos\VendedorDAO.class
 vista\MantenimientoVendedores$8.class

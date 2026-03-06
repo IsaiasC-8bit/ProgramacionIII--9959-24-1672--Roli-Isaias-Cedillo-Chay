@@ -7,6 +7,8 @@ package vista;
 
 import datos.UsuarioDAO;
 import domain.Usuario;
+import domain.Carrera;
+import datos.CarreraDAO;
 import java.awt.HeadlessException;
 import domain.Computador;
 
@@ -45,6 +47,7 @@ public class Login extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         txtContraseña = new javax.swing.JPasswordField();
         btnAcesso = new javax.swing.JButton();
+        carreras_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +86,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        carreras_button.setText("Carreras");
+        carreras_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carreras_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,8 +119,10 @@ public class Login extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAcesso)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                        .addComponent(btnAcesso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(carreras_button)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,8 +141,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(jButton2)
-                    .addComponent(btnAcesso))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(btnAcesso)
+                    .addComponent(carreras_button))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,34 +156,34 @@ public class Login extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
 
-        if (txtUsuario.getText().trim().isEmpty() || txtContraseña.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else {
-            try {
-                Usuario usuarioAConsultar = new Usuario();
-                UsuarioDAO usuarioDAO = new UsuarioDAO();
-                usuarioAConsultar.setUsername(txtUsuario.getText().trim());
-                // Recuperación de información a través de otro objeto
-                usuarioAConsultar = usuarioDAO.query(usuarioAConsultar);
+            if (txtUsuario.getText().trim().isEmpty() || txtContraseña.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    Usuario usuarioAConsultar = new Usuario();
+                    UsuarioDAO usuarioDAO = new UsuarioDAO();
+                    usuarioAConsultar.setUsername(txtUsuario.getText().trim());
+                    // Recuperación de información a través de otro objeto
+                    usuarioAConsultar = usuarioDAO.query(usuarioAConsultar);
 
-                if (txtContraseña.getText().equals(usuarioAConsultar.getPassword()) && txtUsuario.getText().equals(usuarioAConsultar.getUsername())) {
-                    JOptionPane.showMessageDialog(null, "Bienvenido al SISTEMA\n", "Mensaje de bienvenida", JOptionPane.INFORMATION_MESSAGE);
+                    if (txtContraseña.getText().equals(usuarioAConsultar.getPassword()) && txtUsuario.getText().equals(usuarioAConsultar.getUsername())) {
+                        JOptionPane.showMessageDialog(null, "Bienvenido al SISTEMA\n", "Mensaje de bienvenida", JOptionPane.INFORMATION_MESSAGE);
 
-                    MdiGeneral menuGeneral = new MdiGeneral();
-                    menuGeneral.setVisible(true);
-                    this.dispose();
+                        MdiGeneral menuGeneral = new MdiGeneral();
+                        menuGeneral.setVisible(true);
+                        this.dispose();
 
-                } else {
+                    } else {
+                        JOptionPane.showMessageDialog(this, "ERROR AL ENCONTRAR USUARIO o CONTRASEÑA", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        txtContraseña.setText("");
+                        txtUsuario.setText("");
+                    }
+                } catch (HeadlessException e) {
                     JOptionPane.showMessageDialog(this, "ERROR AL ENCONTRAR USUARIO o CONTRASEÑA", "ERROR", JOptionPane.ERROR_MESSAGE);
                     txtContraseña.setText("");
                     txtUsuario.setText("");
                 }
-            } catch (HeadlessException e) {
-                JOptionPane.showMessageDialog(this, "ERROR AL ENCONTRAR USUARIO o CONTRASEÑA", "ERROR", JOptionPane.ERROR_MESSAGE);
-                txtContraseña.setText("");
-                txtUsuario.setText("");
             }
-        }
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -190,6 +203,12 @@ public class Login extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnAcessoActionPerformed
+
+    private void carreras_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carreras_buttonActionPerformed
+        // TODO add your handling code here:
+        MantenimientoCarreras mantenimiento = new MantenimientoCarreras();
+        mantenimiento.setVisible(true);
+    }//GEN-LAST:event_carreras_buttonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -229,6 +248,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAcesso;
+    private javax.swing.JButton carreras_button;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
